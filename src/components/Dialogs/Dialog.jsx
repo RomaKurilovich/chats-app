@@ -3,17 +3,16 @@ import s from './../Chat.module.css'
 
 const Dialog = (props) => {
   return(
-
           <div className={s.dialog}>
               <img className={s.photo} src={'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/firefox-true.png'}/>
               <div className={s.dialogInfo}>
                   <div>
-                      <div>Name </div>
-                      <div>message </div>
+                      <div>{props.dialog.interLocuterName}</div>
+                      <div>{props.dialog.lastMessageBody} </div>
                   </div>
                   <div>
-                      <div>Date </div>
-                      <div>count </div>
+                      <div>{props.dialog.lastMessageData} </div>
+                      <div>{props.dialog.newMessageCount} </div>
                   </div>
               </div>
           </div>
