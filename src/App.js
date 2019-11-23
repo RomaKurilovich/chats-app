@@ -15,10 +15,7 @@ class App extends React.Component{
         api.getKey()
             .then(token => localStorage.setItem('token', token));
 
-        const socket = openSocket('http://messenger-hackathon.herocuapp.com')
-            socket.on('get-chats-success', (chat => {
-                debugger
-            }))
+        
     }
 
     render(){

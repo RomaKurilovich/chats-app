@@ -2,6 +2,7 @@ import React from 'react'
 import Dialogs from "./Dialogs/Dialogs";
 import Messages from "./messages/Messages";
 import s from './Chat.module.css'
+import openSocket from "socket.io-client";
 
 class Chat extends React.Component  {
     state = {
@@ -47,6 +48,17 @@ class Chat extends React.Component  {
             body: 'hello '
         }]
     };
+    componentDidMount(){
+        const socket = openSocket('http://messenger-hackathon.herokuapp.com');
+        socket.on('get-chats-success', chats => {
+            console.log(chats)
+        });
+        socket.emit('get-chats', {token: localStorage.getItem('token')})
+            
+    }
+    setDialogs(){
+
+    }
 
     render(){
         return (
