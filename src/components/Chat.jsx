@@ -51,7 +51,7 @@ class Chat extends React.Component  {
             {
                 chatId: "12",
                 authorId: "123",
-                isMessageRead: false,
+                isMessageRead: true,
                 date: "12:45",
                 status: 'not deleted',
                 body: 'hi '
@@ -59,7 +59,7 @@ class Chat extends React.Component  {
             {
                 chatId: "12",
                 authorId: "125",
-                isMessageRead: false,
+                isMessageRead: true,
                 date: "12:45",
                 status: 'not deleted',
                 body: 'hi '
@@ -67,7 +67,7 @@ class Chat extends React.Component  {
             {
                 chatId: "12",
                 authorId: "125",
-                isMessageRead: false,
+                isMessageRead: true,
                 date: "12:45",
                 status: 'not deleted',
                 body: 'hi '

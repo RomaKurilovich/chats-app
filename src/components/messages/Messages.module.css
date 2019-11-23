@@ -4,7 +4,7 @@
     width: 50%;
     border: 1px solid black;
     border-radius: 20px;
-    grid-template-areas: "body body body body body body body body body date";
+    grid-template-areas: "body body body body body body body body date check";
     margin-top: 20px;
 }
 
@@ -23,6 +23,17 @@
     grid-area: body;
     align-self: end;
     justify-self: end;
+}
+
+.check{
+    grid-area: check;
+    align-self: end;
+    justify-self: end;
+}
+
+.icon{
+    width: 10px;
+    height: 10px
 }
 
 
