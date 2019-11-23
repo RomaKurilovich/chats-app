@@ -35,12 +35,14 @@ class Messages extends React.Component{
                         return <Message message={m}/>
                 })}
             </div>
-            { this.props.writeMeId === this.state.id  && <div>
-                 <span className={s.pen4ik}><img className={s.pen} src={pen}/>Interlocutor is typing...</span>
-            </div>}
+
                 <div className={s.form}>
                     <textarea onChange={this.updateValue} placeholder={'Write a message...'} value={this.state.value} className={s.text}/>
-                    <button className={s.sendButton} onClick={()=>{this.props.sendMessage(this.state.value); this.setState({status: "notWork"})}}>Send</button>
+                    <button className={s.sendButton} onClick={()=>{this.props.sendMessage(this.state.value); this.setState({status: "notWork"})}}>
+                        Send
+                        { this.props.isTyping &&   <span className={s.pen4ik}><img className={s.pen} src={pen}/>Interlocutor is typing...</span>
+                        }
+                    </button>
                 </div>
             </div>
 
