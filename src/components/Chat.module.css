@@ -22,7 +22,10 @@
 .dialog{
     display: flex;
     justify-content: space-between;
-    border: 2px solid black;
+}
+
+.dialog:hover{
+    background-color: #eeeeee;
 }
 
 .dialogInfo{

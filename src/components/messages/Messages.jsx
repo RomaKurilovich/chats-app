@@ -4,14 +4,13 @@ import Message from "./Message";
 
 class Messages extends React.Component{
     render(){
-        let messages = this.props.messages.map(m=>{
-            return <Message message={m}/>
-        });
         return(
             <div>
             <div className={s.messages}>
-                {messages}
-
+                {this.props.messages.map(m => {
+                    if(this.props.currentDialogId)
+                        return <Message message={m}/>
+                })}
             </div>
                 <div className={s.form}>
                     <textarea placeholder={'Write a message...'} className={s.text}/>

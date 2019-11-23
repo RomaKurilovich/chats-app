@@ -8,83 +8,13 @@ import Header from './header/Header';
 
 class Chat extends React.Component {
     state = {
-        dialogs: [{
-            chatId: '12',
-            userID: "123",
-            interLocuterId: "125",
-            interLocuterName: "Dima",
-            interLocuterVisitData: "13:26",
-            interLocuterAvatar: {
-                small: "",
-                large: ""
-            },
-            newMessageCount: 10,
-            lastMessageBody: 'hello how are you?',
-            lastMessageAuthorId: "125",
-            lastMessageData: "13:00",
-            lastMessageIsRead: false,
-            isHidden: false
-        },
-        {
-            userID: "123",
-            interLocuterId: "125",
-            interLocuterName: "Andrey",
-            interLocuterVisitData: "13:00",
-            interLocuterAvatar: {
-                small: "",
-                large: ""
-            },
-            newMessageCount: 10,
-            lastMessageBody: 'hello',
-            lastMessageAuthorId: "125",
-            lastMessageData: "13:28",
-            lastMessageIsRead: true,
-            isHidden: false
-        }],
-        messages: [{
-            chatId: "12",
-            authorId: "123",
-            isMessageRead: false,
-            date: "12:45",
-            status: 'not deleted',
-            body: 'hello '
-        },
-        {
-            chatId: "12",
-            authorId: "123",
-            isMessageRead: true,
-            date: "12:45",
-            status: 'not deleted',
-            body: 'hi '
-        },
-        {
-            chatId: "12",
-            authorId: "125",
-            isMessageRead: true,
-            date: "12:45",
-            status: 'not deleted',
-            body: 'hi '
-        },
-        {
-            chatId: "12",
-            authorId: "125",
-            isMessageRead: true,
-            date: "12:45",
-            status: 'not deleted',
-            body: 'hi '
-        },
-        {
-            chatId: "12",
-            authorId: "123",
-            isMessageRead: false,
-            date: "12:45",
-            status: 'not deleted',
-            body: 'hi '
-        },
-        ]
+        dialogs: [],
+        messages: [],
+        currentDialogId: null
     };
 
-    addNewDialogs = (newDialog) =>{
+    addNewDialogs = (newDialog) => {
+     
         this.setState({ dialogs: [...this.state.dialogs, newDialog]})
     }
 
@@ -93,31 +23,38 @@ class Chat extends React.Component {
             .then(token => localStorage.setItem('token', token));
 
         const socket = openSocket('http://messenger-hackathon.herokuapp.com');
-        socket.on('get-chats-success', chats => {
-            console.log(chats)
+        socket.emit('get-chats', {token: localStorage.getItem('token')});
+        socket.on('get-chats-success', res => {
+            console.log(res);
+            this.setState({
+                dialogs: res.chats
+            })
         });
-        socket.emit('get-chats', { token: localStorage.getItem('token') })
 
-
-        socket.emit('get-messages', { token: localStorage.getItem('token') })
-        socket.on('get-messages-success', messages => {
-            console.log(messages)
+        socket.emit('get-messages', {token: localStorage.getItem('token')});
+        socket.on('get-messages-success', res => {
+            console.log(res);
+            this.setState({messages: res.messages.messages})
         });
     }
 
+    setCurrentDialogId = (id) => {
+
+        this.setState({currentDialogId: id})
+    };
+
     render() {
-        return (
-            <div>
-                <Header addNewDialogs={this.addNewDialogs}/>
-                <div className={s.wrapper}>
-                    <div><Dialogs dialogs={this.state.dialogs} /></div>
-                    <div><Messages messages={this.state.messages} /></div>
-                </div>
+        return (<div> <Header addNewDialogs={this.addNewDialogs}/>
+            <div className={s.wrapper}>
+                <div><Dialogs setDialogId={this.setCurrentDialogId} dialogs={this.state.dialogs}/></div>
+                <div><Messages currentDialogId={this.state.currentDialogId} messages={this.state.messages}/></div>
+            </div>
             </div>
 
         )
     }
 }
+
 
 
 export default Chat
