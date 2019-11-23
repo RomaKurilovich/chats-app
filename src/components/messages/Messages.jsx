@@ -1,9 +1,10 @@
 import React from 'react'
+import s from './../Chat.module.css'
 
 class Messages extends React.Component{
     render(){
         return(
-            <div>
+            <div className={s.messages}>
                 Messages
             </div>
         )
