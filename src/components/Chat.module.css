@@ -11,9 +11,12 @@
 }
 
 .messages{
+    display: flex;
     width: 800px;
     height: 100vh;
     border: 2px solid red;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dialog{
@@ -31,4 +34,17 @@
 .photo{
     width: 50px;
     height: 50px;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+}
+
+.text{
+    width: 90%
+}
+
+.sendButton{
+    width: 10%
 }
