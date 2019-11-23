@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
 import {api} from "./api";
+import Header from "./components/header/Header";
 
 class App extends React.Component{
+
+
 
     componentDidMount() {
         api.getKey()
@@ -12,7 +15,7 @@ class App extends React.Component{
     render(){
     return(
         <div>
-            Hello!
+            <Header />
         </div>
     )
   }

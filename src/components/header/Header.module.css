@@ -1,0 +1,13 @@
+.outer {
+    height: 50px;
+    width: 100%;
+    background-color: deepskyblue;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    margin-left: 30px;
+}
