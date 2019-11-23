@@ -12,6 +12,9 @@
     margin-left: 30px;
 }
 .inputSearch{
-    margin-left: 170px;
+    margin-left: 150px;
+    padding: 10px;
+}
+.addDialogButton{
     padding: 10px;
 }

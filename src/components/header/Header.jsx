@@ -8,22 +8,29 @@ class Header extends React.Component{
 
         this.state = { 
             value: '' ,
-            foundUsers: []
+            foundUsers: [],
+            foundUser: {},
         }
 
         this.updateFoundUsers = (data) => {
             this.setState({ foundUsers: data})
         }
+        this.setFoundUser = () => {
+    
+            let user = this.state.foundUsers
+            this.setState({foundUser: user})
+            this.props.addNewDialogs(this.state.foundUser)
+        }
 
         this.onUpdateUserName = (e) =>{
-        debugger
+        
         let newValue = e.currentTarget.value;
         this.setState({ value : newValue})
         usersAPI.getUsers(1,10,newValue, this.updateFoundUsers)
         }
     }
 
-    componi
+
 
     render(){
 
@@ -33,7 +40,8 @@ class Header extends React.Component{
                     Chat App
                 </div>
                 <div>
-                    <input className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
+                    <input onInput={(e)=> console.log(e.currentTarget)} className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
+                    <button className={s.addDialogButton} onClick={this.setFoundUser}>Add</button>
                     <datalist id="users">
                     {this.state.foundUsers.map((u, index) => {
                         return <option key={index} value={u.name} />
