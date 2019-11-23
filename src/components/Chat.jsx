@@ -10,7 +10,9 @@ class Chat extends React.Component {
     state = {
         dialogs: [],
         messages: [],
-        currentDialogId: null
+        currentDialogId: null,
+        writeMeId: null,
+        whriteHim: null,
     };
 
     addNewDialogs = (newDialogId) => { 
@@ -32,21 +34,47 @@ class Chat extends React.Component {
         })
     }
 
+    setMessages = (id) => {
+        const socket = openSocket('http://messenger-hackathon.herokuapp.com',{ query: "token=" + localStorage.getItem('token')});
+        socket.emit('get-messages', {token: localStorage.getItem('token'), interlocutorId: id});
+        socket.on('get-messages-success', res => { 
+            console.log(res);
+            this.setState({messages: res.messages.messages})
+        });
+    }
+
+    isTyping = (id) => {
+        this.socket.emit('write-message', {token: localStorage.getItem('token'), interlocutorId: id});
+        };
+    
+
     async componentDidMount() {
         await api.getKey()
             .then(token => localStorage.setItem('token', token));
 
-        const socket = openSocket('http://messenger-hackathon.herokuapp.com',{ query: "token=" + localStorage.getItem('token')});
+        this.socket = openSocket('http://messenger-hackathon.herokuapp.com',{ query: "token=" + localStorage.getItem('token')});
         
-        socket.emit('get-chats', {token: localStorage.getItem('token')});
-        socket.on('get-chats-success', res => {
+        this.socket.emit('get-chats', {token: localStorage.getItem('token')});
+        this.socket.on('get-chats-success', res => {
             console.log(res)
             this.setState({dialogs: res.chats})
         })
+
+       // socket.emit('write-message', {token: localStorage.getItem('token'), interlocutorId: this.state.whriteHim});
+        this.socket.on('write-message-success', res => { 
+            console.log(res);
+            this.setState({writeMeId: res.interlocutorId})
+            clearTimeout(this.tm);
+            this.tm = setTimeout(()=>{
+                
+            this.setState({writeMeId: 0})
+   
+            },1000);
+        });
         
 
-        socket.emit('get-messages', {token: localStorage.getItem('token')});
-        socket.on('get-messages-success', res => {
+       this. socket.emit('get-messages', {token: localStorage.getItem('token'), interlocutorId: this.state.currentDialogId});
+        this.socket.on('get-messages-success', res => {
             console.log(res);
             this.setState({messages: res.messages.messages})
         });
@@ -55,7 +83,12 @@ class Chat extends React.Component {
     setCurrentDialogId = (id) => {
         debugger
         this.setState({currentDialogId: id})
+        this.setMessages(id)
     };
+
+    setWriteHim = (id) => {
+        this.setState({whriteHim: id})
+    }
 
 
 
@@ -63,7 +96,7 @@ class Chat extends React.Component {
         return (<div> <Header addNewDialogs={this.addNewDialogs}/>
             <div className={s.wrapper}>
                 <div><Dialogs setDialogId={this.setCurrentDialogId} dialogs={this.state.dialogs}/></div>
-                <div><Messages sendMessage={this.sendMessage} currentDialogId={this.state.currentDialogId} messages={this.state.messages}/></div>
+                <div><Messages writeMeId={this.state.writeMeId} setWriteHim={this.state.setWriteHim} isTyping={this.isTyping}  sendMessage={this.sendMessage} currentDialogId={this.state.currentDialogId} messages={this.state.messages}/></div>
             </div>
             </div>
 
