@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import s from './../Chat.module.css'
 
 class Dialog extends Component {
-    render() {
+    render() { debugger
         return (
             <div onClick={() => this.props.setDialogId(this.props.dialog.interlocutor.id)} className={s.dialog}>
                 {/*<img className={s.photo}
