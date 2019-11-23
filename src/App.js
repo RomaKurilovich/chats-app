@@ -2,13 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const App = () => {
-  return (
-      <div>
+class App extends React.Component{
+  render(){
+    return(
+        <div>
 
-      </div>
-  )
-};
+        </div>
+    )
+  }
+}
 
 
 export default App
