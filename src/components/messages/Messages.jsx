@@ -4,12 +4,14 @@ import Message from "./Message";
 
 class Messages extends React.Component{
     render(){
-        let messages = this.props.messages.map(m=>{
-            return <Message message={m}/>
-        });
+    debugger
         return(
             <div className={s.messages}>
-                {messages}
+                {this.props.messages.map(m => {
+                    if(this.props.currentDialogId)
+                        return <Message message={m}/>
+
+                })}
             </div>
         )
     }

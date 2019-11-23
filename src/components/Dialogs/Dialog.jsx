@@ -2,12 +2,13 @@ import React from 'react'
 import s from './../Chat.module.css'
 
 const Dialog = (props) => {
+
   return(
-          <div className={s.dialog}>
+          <div onClick={() => props.setDialogId(props.dialog.userId)} className={s.dialog}>
               <img className={s.photo} src={'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/firefox-true.png'}/>
               <div className={s.dialogInfo}>
                   <div>
-                      <div>{props.dialog.interLocuterName}</div>
+                      <div>{props.dialog.name}</div>
                       <div>{props.dialog.lastMessageBody} </div>
                   </div>
                   <div>
