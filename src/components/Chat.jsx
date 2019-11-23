@@ -1,12 +1,59 @@
 import React from 'react'
 
-const Chat = () => {
-    return (
-        <div >
+class Chat extends React.Component  {
+    state = {
+        dialogs: [{
+            chatId: '12',
+            userID: "123",
+            interLocuterId: "125",
+            interLocuterName: "Dima",
+            interLocuterVisitData: "13:26",
+            interLocuterAvatar: {
+                small: "",
+                large: ""
+            },
+            newMessageCount: 10,
+            lastMessageBody:'hello how are you?',
+            lastMessageAuthorId: "125",
+            lastMessageData: "13:28",
+            lastMessageIsRead: false,
+            isHidden: false    
+        },
+        {
+            userID: "123",
+            interLocuterId: "125",
+            interLocuterName: "Dima",
+            interLocuterVisitData: "13:26",
+            interLocuterAvatar: {
+                small: "",
+                large: ""
+            },
+            newMessageCount: 10,
+            lastMessageBody:'hello how are you?',
+            lastMessageAuthorId: "125",
+            lastMessageData: "13:28",
+            lastMessageIsRead: false,
+            isHidden: false    
+        }],
+        messages:[{
+            chatId: "12",
+            authorId: "123",
+            isMessageRead: false,
+            date: "12:45",
+            status: 'not deleted' ,
+            body: 'hello '
+        }]
+    }
 
-        </div>
-    )
-};
+    render(){
+        return (
+            <div>
+                <div><Dialogs dialogs={this.state.dialogs}/></div>
+                <div><Message messages={this.state.messages}/></div>
+            </div>
+        )
+    }
+}
 
 
 export default Chat
