@@ -1,11 +1,18 @@
 .message{
+    width: 50%;
+    margin-top: 20px;
+}
+
+.messageBox:hover{
+    background-color: #eeeeee;
+}
+
+.messageBox{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    width: 50%;
-    border: 1px solid black;
-    border-radius: 20px;
     grid-template-areas: "body body body body body body body body date check";
-    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .my{
@@ -17,12 +24,14 @@
     grid-area: body;
     align-self: start;
     justify-self: start;
+    margin: 6px
 }
 
 .data {
     grid-area: body;
     align-self: end;
     justify-self: end;
+    margin: 6px
 }
 
 .check{
@@ -33,7 +42,8 @@
 
 .icon{
     width: 10px;
-    height: 10px
+    height: 10px;
+    margin: 5px
 }
 
 
