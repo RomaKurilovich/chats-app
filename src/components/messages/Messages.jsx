@@ -8,8 +8,11 @@ class Messages extends React.Component{
             return <Message message={m}/>
         });
         return(
+            <div>
             <div className={s.messages}>
                 {messages}
+
+            </div>
                 <div className={s.form}>
                     <textarea placeholder={'Write a message...'} className={s.text}/>
                     <button className={s.sendButton}>Send</button>

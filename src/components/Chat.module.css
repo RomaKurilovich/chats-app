@@ -13,10 +13,10 @@
 .messages{
     display: flex;
     width: 800px;
-    height: 100vh;
+    height: 90vh;
     border: 2px solid red;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .dialog{
@@ -42,9 +42,11 @@
 }
 
 .text{
-    width: 90%
+    width: 90%;
+    height: 10vh
 }
 
 .sendButton{
-    width: 10%
+    width: 10%;
+    height: 10vh;
 }

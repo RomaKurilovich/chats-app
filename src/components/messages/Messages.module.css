@@ -5,15 +5,13 @@
     border: 1px solid black;
     border-radius: 20px;
     grid-template-areas: "body body body body body body body body body date";
+    margin-top: 20px;
 }
 
 .my{
-    float: right;
+    align-self: flex-end;
 }
 
-.his{
-    float: left;
-}
 
 .body {
     grid-area: body;
