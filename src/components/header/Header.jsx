@@ -16,9 +16,9 @@ class Header extends React.Component{
             this.setState({ foundUsers: data})
         }
         this.setFoundUser = () => {
-    
-            let user = this.state.foundUsers
-            this.setState({foundUser: user})
+            debugger
+            let user = this.state.foundUsers.find((u) => u.name === this.state.value)
+            this.setState({foundUser: user[0]})
             this.props.addNewDialogs(this.state.foundUser)
         }
 
