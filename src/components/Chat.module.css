@@ -4,16 +4,14 @@
 }
 
 .dialogs{
-    margin-right: 4px;
     width: 30vw;
-    height: 100vh;
-    border: 3px solid black
+    height: 90vh;
 }
 
 .messages{
     display: flex;
     width: 70vw;
-    height: 90vh;
+    height: 80vh;
     flex-direction: column;
     justify-content: flex-start;
     background-image: url('https://i.pinimg.com/originals/b4/bf/af/b4bfafa2dccc4cf3fe24f774b3f13b12.jpg');
@@ -22,6 +20,10 @@
 .dialog{
     display: flex;
     justify-content: space-between;
+    border-radius: 4px;
+    border: 1px solid white;
+    background-color: #282c34;
+    color: white;
 }
 
 .dialog:hover{
@@ -50,8 +52,27 @@
 }
 
 .sendButton{
-    width: 10%;
+    width: 10vh;
     height: 10vh;
+    margin: 0;
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+.sendButton:hover{
+    opacity: 0.7;
+}
+
+.sendButton:active{
+    background-color: #09d3ac;
 }
 
 .preloader{
@@ -60,4 +81,9 @@
     align-items: center;
     width: 30vw;
     height: 100%;
+}
+
+.send{
+    width: 30px;
+    height: 30px;
 }

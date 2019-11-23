@@ -4,7 +4,7 @@
 }
 
 .messageBox:hover{
-    background-color: #eeeeee;
+    background-color: #555555;
 }
 
 .messageBox{
@@ -13,6 +13,8 @@
     grid-template-areas: "body body body body body body body body date check";
     border: 1px solid black;
     border-radius: 10px;
+    background-color: #333333;
+    color: white;
 }
 
 .my{
