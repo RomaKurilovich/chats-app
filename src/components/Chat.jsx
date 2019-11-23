@@ -1,4 +1,7 @@
 import React from 'react'
+import Dialogs from "./Dialogs/Dialogs";
+import Messages from "./messages/Messages";
+import s from './Chat.module.css'
 
 class Chat extends React.Component  {
     state = {
