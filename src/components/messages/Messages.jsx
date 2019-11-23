@@ -8,7 +8,7 @@ class Messages extends React.Component{
             <div>
             <div className={s.messages}>
                 {this.props.messages.map(m => {
-                    if(this.props.currentDialogId)
+                    if(this.props.currentDialogId && (m.status != 'deleted-for-me'))
                         return <Message message={m}/>
                 })}
             </div>
