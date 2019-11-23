@@ -3,7 +3,6 @@ import s from './../Chat.module.css'
 
 class Dialog extends Component {
     render() {
-        debugger
         return (
             <div onClick={() => this.props.setDialogId(this.props.dialog.interlocutor._id)} className={s.dialog}>
                 {/*<img className={s.photo}
