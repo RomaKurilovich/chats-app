@@ -2,6 +2,7 @@ import React from 'react'
 import s from './../Chat.module.css'
 import Message from "./Message";
 import send from './../../assets/send-button.svg'
+import pen from "../../assets/pencil-edit-button.svg";
 
 class Messages extends React.Component{
 
@@ -16,7 +17,7 @@ class Messages extends React.Component{
         let newValue = e.currentTarget.value
         this.setState({value: newValue})
         //this.setState({status: "typing"})
-        this.props.isTyping(this.props.id)
+        this.props.isTyping(this.state.id)
     }
 
     componentDidMount(){
@@ -26,7 +27,6 @@ class Messages extends React.Component{
     
 
     render(){
-        debugger
         return(
             <div>
             <div className={s.messages}>
@@ -36,7 +36,7 @@ class Messages extends React.Component{
                 })}
             </div>
             { this.props.writeMeId === this.state.id  && <div>
-                    he typing right now
+                 <span className={s.pen4ik}><img className={s.pen} src={pen}/>Interlocutor is typing...</span>
             </div>}
                 <div className={s.form}>
                     <textarea onChange={this.updateValue} placeholder={'Write a message...'} value={this.state.value} className={s.text}/>

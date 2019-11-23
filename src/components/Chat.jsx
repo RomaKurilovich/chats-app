@@ -16,12 +16,12 @@ class Chat extends React.Component {
     };
 
     addNewDialogs = (newDialogId) => { 
-        debugger   
+
        // this.setState({ dialogs: [...this.state.dialogs, newDialog]})
        const socket = openSocket('http://messenger-hackathon.herokuapp.com',{ query: "token=" + localStorage.getItem('token')});
         socket.emit("init-chat", {token: localStorage.getItem('token'), interlocutorId: newDialogId})
         socket.on("init-chat-success", res => {
-            debugger
+
             this.setState({dialogs: [...this.state.dialogs, res.chat]})
         })
     }
@@ -29,7 +29,7 @@ class Chat extends React.Component {
         const socket = openSocket('http://messenger-hackathon.herokuapp.com',{ query: "token=" + localStorage.getItem('token')});
         socket.emit("send-message", {token: localStorage.getItem('token'), interlocutorId: this.state.currentDialogId, body: text})
         socket.on("send-message-success", res => {
-            debugger
+
             this.setState({messages: [...this.state.messages, res.message]})
         })
     }
@@ -44,8 +44,9 @@ class Chat extends React.Component {
     }
 
     isTyping = (id) => {
-        this.socket.emit('write-message', {token: localStorage.getItem('token'), interlocutorId: id});
-        };
+
+        this.socket.emit('write-message', {token: localStorage.getItem('token'), interlocutorId: this.state.currentDialogId});
+    };
     
 
     async componentDidMount() {
@@ -81,7 +82,7 @@ class Chat extends React.Component {
     }
 
     setCurrentDialogId = (id) => {
-        debugger
+debugger;
         this.setState({currentDialogId: id})
         this.setMessages(id)
     };
@@ -96,7 +97,7 @@ class Chat extends React.Component {
         return (<div> <Header addNewDialogs={this.addNewDialogs}/>
             <div className={s.wrapper}>
                 <div><Dialogs setDialogId={this.setCurrentDialogId} dialogs={this.state.dialogs}/></div>
-                <div><Messages writeMeId={this.state.writeMeId} setWriteHim={this.state.setWriteHim} isTyping={this.isTyping}  sendMessage={this.sendMessage} currentDialogId={this.state.currentDialogId} messages={this.state.messages}/></div>
+                <div><Messages writeMeId={this.state.writeMeId} currentDialogId={this.state.currentDialogId} setWriteHim={this.state.setWriteHim} isTyping={this.isTyping}  sendMessage={this.sendMessage} currentDialogId={this.state.currentDialogId} messages={this.state.messages}/></div>
             </div>
             </div>
 
