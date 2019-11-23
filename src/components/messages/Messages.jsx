@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './../Chat.module.css'
 import Message from "./Message";
+import send from './../../assets/send-button.svg'
 
 class Messages extends React.Component{
 
