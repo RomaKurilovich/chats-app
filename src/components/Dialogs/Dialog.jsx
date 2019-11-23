@@ -7,7 +7,7 @@ class Dialog extends Component {
         return (
             <div onClick={() => this.props.setDialogId(this.props.dialog.userId)} className={s.dialog}>
                 <img className={s.photo}
-                     src={'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/firefox-true.png'}/>
+                     src={this.props.dialog.interlocutor.photo.small}/>
                 <div className={s.dialogInfo}>
                     <div>
                         <div>{this.props.dialog.interlocutor.name}</div>
