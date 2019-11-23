@@ -20,7 +20,7 @@ class Chat extends React.Component  {
             lastMessageAuthorId: "125",
             lastMessageData: "13:00",
             lastMessageIsRead: false,
-            isHidden: false    
+            isHidden: false
         },
         {
             userID: "123",
@@ -35,17 +35,50 @@ class Chat extends React.Component  {
             lastMessageBody:'hello',
             lastMessageAuthorId: "125",
             lastMessageData: "13:28",
-            lastMessageIsRead: false,
+            lastMessageIsRead: true,
             isHidden: false    
         }],
-        messages:[{
+        messages: [{
             chatId: "12",
             authorId: "123",
             isMessageRead: false,
             date: "12:45",
-            status: 'not deleted' ,
+            status: 'not deleted',
             body: 'hello '
-        }]
+        },
+            {
+                chatId: "12",
+                authorId: "123",
+                isMessageRead: false,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "125",
+                isMessageRead: false,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "125",
+                isMessageRead: false,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "123",
+                isMessageRead: false,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+        ]
     };
 
     render(){
