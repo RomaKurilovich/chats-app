@@ -4,7 +4,7 @@ class Dialogs extends React.Component{
     render(){
         return(
             <div>
-
+                Dialogs
             </div>
         )
     }
