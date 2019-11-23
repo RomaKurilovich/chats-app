@@ -13,9 +13,15 @@ class Chat extends React.Component {
         currentDialogId: null
     };
 
-    addNewDialogs = (newDialog) => {
-     
-        this.setState({ dialogs: [...this.state.dialogs, newDialog]})
+    addNewDialogs = (newDialogId) => { 
+        debugger   
+       // this.setState({ dialogs: [...this.state.dialogs, newDialog]})
+       const socket = openSocket('http://messenger-hackathon.herokuapp.com');
+        socket.emit("init-chat", {token: localStorage.getItem('token'), interlocutorId: newDialogId})
+        socket.on("init-chat-success", chat => {
+            debugger
+            this.setState({dialogs: [...this.state.dialogs, chat]})
+        })
     }
 
     async componentDidMount() {

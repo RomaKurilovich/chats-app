@@ -9,7 +9,7 @@ class Header extends React.Component{
         this.state = { 
             value: '' ,
             foundUsers: [],
-            foundUser: {},
+            foundUserId: null,
         }
 
         this.updateFoundUsers = (data) => {
@@ -18,8 +18,8 @@ class Header extends React.Component{
         this.setFoundUser = () => {
             debugger
             let user = this.state.foundUsers.find((u) => u.name === this.state.value)
-            this.setState({foundUser: user[0]})
-            this.props.addNewDialogs(this.state.foundUser)
+       //     this.setState({foundUserId: user.id})
+            this.props.addNewDialogs(user.id)
         }
 
         this.onUpdateUserName = (e) =>{
