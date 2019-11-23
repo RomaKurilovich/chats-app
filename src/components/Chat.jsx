@@ -18,21 +18,21 @@ class Chat extends React.Component  {
             newMessageCount: 10,
             lastMessageBody:'hello how are you?',
             lastMessageAuthorId: "125",
-            lastMessageData: "13:28",
+            lastMessageData: "13:00",
             lastMessageIsRead: false,
             isHidden: false    
         },
         {
             userID: "123",
             interLocuterId: "125",
-            interLocuterName: "Dima",
-            interLocuterVisitData: "13:26",
+            interLocuterName: "Andrey",
+            interLocuterVisitData: "13:00",
             interLocuterAvatar: {
                 small: "",
                 large: ""
             },
             newMessageCount: 10,
-            lastMessageBody:'hello how are you?',
+            lastMessageBody:'hello',
             lastMessageAuthorId: "125",
             lastMessageData: "13:28",
             lastMessageIsRead: false,
@@ -46,13 +46,13 @@ class Chat extends React.Component  {
             status: 'not deleted' ,
             body: 'hello '
         }]
-    }
+    };
 
     render(){
         return (
-            <div>
+            <div className={s.wrapper}>
                 <div><Dialogs dialogs={this.state.dialogs}/></div>
-                <div><Message messages={this.state.messages}/></div>
+                <div><Messages messages={this.state.messages}/></div>
             </div>
         )
     }
