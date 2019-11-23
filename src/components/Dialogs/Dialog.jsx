@@ -12,7 +12,7 @@ const Dialog = (props) => {
                   </div>
                   <div>
                       <div>{props.dialog.lastMessageData} </div>
-                      <div>{props.dialog.newMessageCount} </div>
+                      <div>{!props.dialog.lastMessageIsRead && props.dialog.newMessageCount} </div>
                   </div>
               </div>
           </div>

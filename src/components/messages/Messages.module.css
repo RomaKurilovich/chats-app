@@ -1,0 +1,40 @@
+.message{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 20px;
+    grid-template-areas: "body body body body body body body body date check";
+    margin-top: 20px;
+}
+
+.my{
+    align-self: flex-end;
+}
+
+
+.body {
+    grid-area: body;
+    align-self: start;
+    justify-self: start;
+}
+
+.data {
+    grid-area: body;
+    align-self: end;
+    justify-self: end;
+}
+
+.check{
+    grid-area: check;
+    align-self: end;
+    justify-self: end;
+}
+
+.icon{
+    width: 10px;
+    height: 10px
+}
+
+
+

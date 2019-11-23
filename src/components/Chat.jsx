@@ -2,6 +2,7 @@ import React from 'react'
 import Dialogs from "./Dialogs/Dialogs";
 import Messages from "./messages/Messages";
 import s from './Chat.module.css'
+import {api} from "../api";
 import openSocket from "socket.io-client";
 
 class Chat extends React.Component  {
@@ -21,7 +22,7 @@ class Chat extends React.Component  {
             lastMessageAuthorId: "125",
             lastMessageData: "13:00",
             lastMessageIsRead: false,
-            isHidden: false    
+            isHidden: false
         },
         {
             userID: "123",
@@ -36,19 +37,68 @@ class Chat extends React.Component  {
             lastMessageBody:'hello',
             lastMessageAuthorId: "125",
             lastMessageData: "13:28",
-            lastMessageIsRead: false,
+            lastMessageIsRead: true,
             isHidden: false    
         }],
-        messages:[{
+        messages: [{
             chatId: "12",
             authorId: "123",
             isMessageRead: false,
             date: "12:45",
-            status: 'not deleted' ,
+            status: 'not deleted',
             body: 'hello '
-        }]
+        },
+            {
+                chatId: "12",
+                authorId: "123",
+                isMessageRead: true,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "125",
+                isMessageRead: true,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "125",
+                isMessageRead: true,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+            {
+                chatId: "12",
+                authorId: "123",
+                isMessageRead: false,
+                date: "12:45",
+                status: 'not deleted',
+                body: 'hi '
+            },
+        ]
     };
 
+    async componentDidMount() {
+        await api.getKey()
+                .then(token => localStorage.setItem('token', token));
+
+            const socket = openSocket('http://messenger-hackathon.herokuapp.com');
+            socket.on('get-chats-success', chats => {
+                console.log(chats)
+            });
+            socket.emit('get-chats', {token: localStorage.getItem('token')})
+
+
+            socket.emit('get-messages', {token: localStorage.getItem('token')})
+            socket.on('get-messages-success', messages => {
+                console.log(messages)
+            });
+    }
 
     render(){
         return (
