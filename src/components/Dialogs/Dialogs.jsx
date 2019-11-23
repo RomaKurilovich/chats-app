@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './../Chat.module.css'
 import Dialog from "./Dialog";
+import Preloader from "../../assets/preloader/Preloader";
 
 class Dialogs extends React.Component{
 
@@ -10,6 +11,9 @@ class Dialogs extends React.Component{
                 return <Dialog setDialogId={this.props.setDialogId} dialog={d}/>
             }
         });
+        if (!this.props.dialogs[0]){
+            return <Preloader/>
+        }
         return(<div className={s.dialogs}>
                 {Dialogs}
         </div>

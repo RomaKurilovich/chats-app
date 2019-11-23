@@ -43,6 +43,8 @@ class Chat extends React.Component {
         this.setState({currentDialogId: id})
     };
 
+
+
     render() {
         return (<div> <Header addNewDialogs={this.addNewDialogs}/>
             <div className={s.wrapper}>

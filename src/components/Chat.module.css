@@ -14,7 +14,6 @@
     display: flex;
     width: 800px;
     height: 90vh;
-    border: 2px solid red;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -52,4 +51,10 @@
 .sendButton{
     width: 10%;
     height: 10vh;
+}
+
+.preloader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
