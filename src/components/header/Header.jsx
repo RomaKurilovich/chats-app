@@ -40,7 +40,7 @@ class Header extends React.Component{
                     Chat App
                 </div>
                 <div>
-                    <input onInput={(e)=> console.log(e.currentTarget)} className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
+                    <input className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
                     <button className={s.addDialogButton} onClick={this.setFoundUser}>Add</button>
                     <datalist id="users">
                     {this.state.foundUsers.map((u, index) => {
