@@ -3,6 +3,17 @@ import s from './../Chat.module.css'
 import Message from "./Message";
 
 class Messages extends React.Component{
+
+    state = {
+        value: '', 
+        id: null,
+    }
+
+    updateValue = (e) => {
+        let newValue = e.currentTarget.value
+        this.setState({value: newValue})
+    }
+
     render(){
         return(
             <div>
@@ -13,8 +24,8 @@ class Messages extends React.Component{
                 })}
             </div>
                 <div className={s.form}>
-                    <textarea placeholder={'Write a message...'} className={s.text}/>
-                    <button className={s.sendButton}>Send</button>
+                    <textarea onChange={this.updateValue} placeholder={'Write a message...'} value={this.state.value} className={s.text}/>
+                    <button className={s.sendButton} onClick={()=>this.props.sendMessage(this.state.value)}>Send</button>
                 </div>
             </div>
 
