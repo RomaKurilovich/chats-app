@@ -1,12 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {api} from "./api";
 
 class App extends React.Component{
-  render(){
+
+    componentDidMount() {
+        api.getKey()
+            .then(token => localStorage.setItem('token', token))
+    }
+
+    render(){
     return(
         <div>
-
+            Hello!
         </div>
     )
   }
