@@ -48,17 +48,7 @@ class Chat extends React.Component  {
             body: 'hello '
         }]
     };
-    componentDidMount(){
-        const socket = openSocket('http://messenger-hackathon.herokuapp.com');
-        socket.on('get-chats-success', chats => {
-            console.log(chats)
-        });
-        socket.emit('get-chats', {token: localStorage.getItem('token')})
-            
-    }
-    setDialogs(){
 
-    }
 
     render(){
         return (

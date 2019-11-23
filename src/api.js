@@ -11,3 +11,11 @@ export const api = {
             .then(res => res.data)
     }
 };
+export const usersAPI = {
+    getUsers(currentPage = 1, pageSize = 10, term = '',cb) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
+            .then(response => {
+               cb(response.data.items);
+            });
+    }
+}
