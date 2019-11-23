@@ -3,6 +3,15 @@
     justify-content: space-between;
 }
 
+.pen{
+    width: 30px;
+    height: 30px;
+}
+
+.pen4ik{
+    font-size: large;
+}
+
 .dialogs{
     width: 30vw;
     height: 90vh;
@@ -44,11 +53,16 @@
 .form{
     display: flex;
     justify-content: space-between;
+    background-color: darkslategrey;
 }
 
 .text{
     width: 90%;
-    height: 10vh
+    height: 10vh;
+    border-radius: 40px;
+    font-family: Cambria;
+    text-align: center;
+    font-size: large;
 }
 
 .sendButton{
@@ -65,6 +79,7 @@
     border: 2px solid;
     border-radius: 50px;
     transition: 0.2s;
+    horiz-align: center;
 }
 
 .sendButton:hover{

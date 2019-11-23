@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Header.module.css'
 import {usersAPI} from './../../api'
+import add from './../../assets/add.svg'
 
 class Header extends React.Component{
     constructor(props) {
@@ -41,7 +42,7 @@ class Header extends React.Component{
                 </div>
                 <div>
                     <input className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
-                    <button className={s.addDialogButton} onClick={this.setFoundUser}>Add</button>
+                    <button className={s.addDialogButton} onClick={this.setFoundUser}><img src={add} className={s.add}/></button>
                     <datalist id="users">
                     {this.state.foundUsers.map((u, index) => {
                         return <option key={index} value={u.name} />

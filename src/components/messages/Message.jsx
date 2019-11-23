@@ -23,9 +23,9 @@ class Message extends Component {
                 </div>
                 {this.state.isActivated
                 &&<div>
-                <div>Delete message for me</div>
-                    <div>Delete message for interlocutor</div>
-                    <div>Delete message for everyone</div>
+                <div className={s.deleting}>Delete message for me</div>
+                    <div className={s.deleting}>Delete message for interlocutor</div>
+                    <div className={s.deleting}>Delete message for everyone</div>
                     </div>}
             </div>
         )

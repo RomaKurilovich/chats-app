@@ -48,5 +48,17 @@
     margin: 5px
 }
 
+.deleting{
+    background-color: #282c34;
+}
+
+.deleting:hover {
+    background-color: #555555;
+}
+
+.deleting:active{
+    background-color: darkslategrey;
+}
+
 
 
