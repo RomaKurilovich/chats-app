@@ -21,8 +21,7 @@ class Chat extends React.Component {
         // this.setState({ dialogs: [...this.state.dialogs, newDialog]})
         const socket = openSocket('http://messenger-hackathon.herokuapp.com', {query: "token=" + localStorage.getItem('token')});
         socket.emit("init-chat", {token: localStorage.getItem('token'), interlocutorId: newDialogId})
-        socket.on("init-chat-success", res => {
-
+        socket.on("init-chat-success", res => { 
             this.setState({dialogs: [...this.state.dialogs, res.chat]})
         })
     }
@@ -34,20 +33,18 @@ class Chat extends React.Component {
             body: text
         })
         socket.on("send-message-success", res => {
-
             this.setState({messages: [...this.state.messages, res.message]})
         })
     }
 
     setMessages = (id) => {
-        this.   socket.emit('get-messages', {token: localStorage.getItem('token'), interlocutorId: id});
+        this.socket.emit('get-messages', {token: localStorage.getItem('token'), interlocutorId: id});
         this.socket.on('get-messages-success', res => {
-            console.log(res);
             this.setState({messages: res.messages.messages})
         });
     }
 
-    isTyping = (id) => {
+    isTypingF = () => {
 
         this.socket.emit('write-message', {
             token: localStorage.getItem('token'),
@@ -64,22 +61,16 @@ class Chat extends React.Component {
 
         this.socket.emit('get-chats', {token: localStorage.getItem('token')});
         this.socket.on('get-chats-success', res => {
-            console.log(res)
             this.setState({dialogs: res.chats})
         })
 
         // socket.emit('write-message', {token: localStorage.getItem('token'), interlocutorId: this.state.whriteHim});
         this.socket.on('write-message-success', res => {
-            debugger
-            console.log(res);
             if (res.interlocutorId === this.state.currentDialogId) {
                 this.setState({isTyping: true})
-                console.log('true is typing')
                 clearTimeout(this.tm);
                 this.tm = setTimeout(() => {
-
                     this.setState({isTyping: false})
-
                 }, 1000);
             }
 
@@ -91,13 +82,11 @@ class Chat extends React.Component {
             interlocutorId: this.state.currentDialogId
         });
         this.socket.on('get-messages-success', res => {
-            console.log(res);
             this.setState({messages: res.messages.messages})
         });
     }
 
     setCurrentDialogId = (id) => {
-        debugger;
         this.setState({currentDialogId: id})
         this.setMessages(id)
     };
@@ -108,10 +97,11 @@ class Chat extends React.Component {
 
 
     render() {
-        return (<div><Header addNewDialogs={this.addNewDialogs}/>
+        return (<div>{/*<Header addNewDialogs={this.addNewDialogs}/>*/}
                 <div className={s.wrapper}>
                     <div><Dialogs setDialogId={this.setCurrentDialogId} dialogs={this.state.dialogs}/></div>
                     <div><Messages isTyping={this.state.isTyping}
+                    isTypingF={this.isTypingF}
                                    currentDialogId={this.state.currentDialogId}
                                    setWriteHim={this.state.setWriteHim}
                                    sendMessage={this.sendMessage}

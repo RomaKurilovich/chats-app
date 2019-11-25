@@ -17,14 +17,8 @@ class Messages extends React.Component{
         let newValue = e.currentTarget.value
         this.setState({value: newValue})
         //this.setState({status: "typing"})
-        this.props.isTyping(this.state.id)
+        this.props.isTypingF()
     }
-
-    componentDidMount(){
-    
-    }
-
-    
 
     render(){
         return(

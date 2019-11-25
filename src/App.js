@@ -6,12 +6,9 @@ import openSocket from 'socket.io-client';
 import Chat from "./components/Chat";
 
 class App extends React.Component{
-
-
     render(){
     return(
         <div>
-  
             <Chat/>
         </div>
     )

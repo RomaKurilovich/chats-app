@@ -1,5 +1,4 @@
 .message{
-    width: 50%;
     margin-top: 20px;
 }
 
@@ -17,24 +16,6 @@
     color: white;
 }
 
-.my{
-    align-self: flex-end;
-}
-
-
-.body {
-    grid-area: body;
-    align-self: start;
-    justify-self: start;
-    margin: 6px
-}
-
-.data {
-    grid-area: body;
-    align-self: end;
-    justify-self: end;
-    margin: 6px
-}
 
 .check{
     grid-area: check;

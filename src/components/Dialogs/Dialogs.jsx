@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './../Chat.module.css'
+import style from './Dialog.module.css'
 import Dialog from "./Dialog";
 import Preloader from "../../assets/preloader/Preloader";
 
@@ -14,7 +14,7 @@ class Dialogs extends React.Component{
         if (!this.props.dialogs[0]){
             return <Preloader/>
         }
-        return(<div className={s.dialogs}>
+        return(<div className={style.allDialogs}>
                 {Dialogs}
         </div>
         )
