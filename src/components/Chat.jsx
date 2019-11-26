@@ -39,7 +39,7 @@ class Chat extends React.Component {
 
     setMessages = (id) => {
         this.socket.emit('get-messages', {token: localStorage.getItem('token'), interlocutorId: id});
-        this.socket.on('get-messages-success', res => {
+        this.socket.on('get-messages-success', res => { debugger
             this.setState({messages: res.messages.messages})
         });
     }

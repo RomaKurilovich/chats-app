@@ -2,7 +2,7 @@
     border: solid 0.5px grey;
     background: #EBEBEB;
     display: flex;
-    padding: 10px;
+    padding: 15px;
 }
 .photo{
     width: 60px;
@@ -10,13 +10,24 @@
     border-radius: 30px;
 }
 .dateAndName{
+
     display: flex;
     justify-content: space-between;
 }
 .dialogInfo{
-    margin-left: 10px;
+    margin-left: 15px;
+    width: 100%;
 }
 .allDialogs{
     height: 100vh;
     overflow: scroll;
+}
+.nikName{
+    font-weight: 500;
+    font-size: 19px;
+    color:#464646;
+}
+.lastMessage{
+    margin-right: 10px;
+    margin-top: 10px;
 }
