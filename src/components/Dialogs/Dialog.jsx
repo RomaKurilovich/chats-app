@@ -2,9 +2,14 @@ import React, {Component} from 'react'
 import style from './Dialog.module.css'
 
 class Dialog extends Component {
+    setDateInterlocuter = (interlocutor) => {debugger
+        this.props.setDialogId(interlocutor.id)
+        this.props.setInterlocuterPhoto(interlocutor.photo.small)
+        this.props.setInterlocuterName(interlocutor.name)
+    }
     render() {
         return (
-            <div onClick={() => this.props.setDialogId(this.props.dialog.interlocutor.id)} className={style.dialog}>
+            <div onClick={() => this.setDateInterlocuter(this.props.dialog.interlocutor)} className={style.dialog}>
                 <div>
                     <img className={style.photo}
                      src={this.props.dialog.interlocutor.photo.small ? this.props.dialog.interlocutor.photo.small : 'https://ptetutorials.com/images/user-profile.png'}/>

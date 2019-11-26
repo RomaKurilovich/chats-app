@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import s from './Messages.module.css'
+import React, { Component } from 'react'
+import style from './Messages.module.css'
 import oneCheck from './check-symbol.svg'
 import doubleCheck from './double-tick-indicator.svg'
 
@@ -9,25 +9,20 @@ class Message extends Component {
     };
     toggle = () => {
         let toggle = !this.state.isActivated;
-        this.setState({isActivated: toggle})
+        this.setState({ isActivated: toggle })
     };
     render() {
         let checkType = this.props.message.isMessageRead ? doubleCheck : oneCheck;
-        return (
-            <div className={s.message + " " + ((this.props.message.authorId == 'fakeID') ? s.my : s.his)}>
-                <div className={s.messageBox} onDoubleClick={this.toggle}>
-                <span className={s.body}>{this.props.message.body}</span>
-                <span className={s.date}>{this.props.message.date}</span>
-                {(this.props.message.authorId == 123) &&
-                <span className={s.check}><img className={s.icon} src={checkType}/></span>}
+        return (<div className={style.fullMessage + " " + (this.props.message.authorId == this.props.currentDialogId ? style.interlocuterMessage : style.myMessage)}>
+            <div className={style.message}>
+                {this.props.message.authorId == this.props.currentDialogId && <div><img src={this.props.photo === null ? "https://ptetutorials.com/images/user-profile.png" : this.props.photo}></img></div>}
+                <div>
+                    <div className={style.body}>{this.props.message.body}</div>
+                    <div className={style.date}>{this.props.message.date}</div>
                 </div>
-                {this.state.isActivated
-                &&<div>
-                <div className={s.deleting}>Delete message for me</div>
-                    <div className={s.deleting}>Delete message for interlocutor</div>
-                    <div className={s.deleting}>Delete message for everyone</div>
-                    </div>}
+
             </div>
+        </div>
         )
     }
 }

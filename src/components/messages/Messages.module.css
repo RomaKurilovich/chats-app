@@ -1,45 +1,77 @@
+
+.messagesBlock{
+    height: 100vh;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+.choiseChat{
+    text-align: center;
+    line-height: 100%;
+}
+.form{
+    position: absolute;
+    bottom: 0;
+    width:  calc(100vw - 478px);
+    
+} 
+.form input {
+    font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+    border:none;
+    border-top: solid 1px grey;
+    padding: 11px 32px 10px 8px;
+    color: #32465a;
+    width: calc(100% - 90px);
+    height: 17px;
+}
+.form button{
+    float: right;
+    border: none;
+    width: 50px;
+    padding: 12px 0;
+    cursor: pointer;
+    background: #32465a;
+    color: #f5f5f5;
+}
+.interlocuterMessage{
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+}
+.myMessage{
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+
+
+
+}
 .message{
-    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    
 }
+.body{
+    background: #EBEBEB;
+    padding: 7px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius:10px;
 
-.messageBox:hover{
-    background-color: #555555;
 }
+.fullMessage{
+    width: auto;
+    padding: 10px;
+}
+.messages{
+    margin-bottom: 45px;
 
-.messageBox{
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-areas: "body body body body body body body body date check";
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: #333333;
+}
+.message img{
+    width: 40px;;
+}
+.myMessage .body{
+    background: #05728F;
     color: white;
 }
-
-
-.check{
-    grid-area: check;
-    align-self: end;
-    justify-self: end;
-}
-
-.icon{
-    width: 10px;
-    height: 10px;
-    margin: 5px
-}
-
-.deleting{
-    background-color: #282c34;
-}
-
-.deleting:hover {
-    background-color: #555555;
-}
-
-.deleting:active{
-    background-color: darkslategrey;
-}
-
-
-

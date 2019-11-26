@@ -1,6 +1,8 @@
 .wrapper{
     display: grid;
-    grid-template-columns: 460px 1fr
+    grid-template-columns: 460px 1fr;
+    max-width: 100vw;
+
 }
 
 .pen{

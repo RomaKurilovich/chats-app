@@ -21,6 +21,7 @@
 .allDialogs{
     height: 100vh;
     overflow: scroll;
+    overflow-x:hidden;
 }
 .nikName{
     font-weight: 500;

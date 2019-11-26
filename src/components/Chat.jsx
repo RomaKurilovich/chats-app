@@ -13,7 +13,9 @@ class Chat extends React.Component {
         currentDialogId: null,
         writeMeId: null,
         whriteHim: null,
-        isTyping: false
+        isTyping: false,
+        interlocuterPhoto: '',
+        interlocutorName: '',
     };
 
     addNewDialogs = (newDialogId) => {
@@ -90,6 +92,12 @@ class Chat extends React.Component {
         this.setState({currentDialogId: id})
         this.setMessages(id)
     };
+    setInterlocuterPhoto = (url) => {debugger
+        this.setState({interlocuterPhoto: url})
+    }
+    setInterlocuterName = (name) => {
+        this.setState({interlocuterName: name})
+    }
 
     setWriteHim = (id) => {
         this.setState({whriteHim: id})
@@ -99,14 +107,23 @@ class Chat extends React.Component {
     render() {
         return (<div>{/*<Header addNewDialogs={this.addNewDialogs}/>*/}
                 <div className={s.wrapper}>
-                    <div><Dialogs setDialogId={this.setCurrentDialogId} dialogs={this.state.dialogs}/></div>
+
+                    <div><Dialogs setDialogId={this.setCurrentDialogId}
+                     dialogs={this.state.dialogs} 
+                     setInterlocuterName={this.setInterlocuterName}
+                     setInterlocuterPhoto={this.setInterlocuterPhoto}
+                     /></div>
+
                     <div><Messages isTyping={this.state.isTyping}
                     isTypingF={this.isTypingF}
                                    currentDialogId={this.state.currentDialogId}
                                    setWriteHim={this.state.setWriteHim}
                                    sendMessage={this.sendMessage}
                                    currentDialogId={this.state.currentDialogId}
-                                   messages={this.state.messages}/></div>
+                                   messages={this.state.messages}
+                                   interlocutorName={this.state.interlocutorName}
+                                   interlocuterPhoto={this.state.interlocuterPhoto}
+                                   /></div>
                 </div>
             </div>
 
