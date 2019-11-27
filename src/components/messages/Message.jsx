@@ -17,7 +17,7 @@ class Message extends Component {
             <div className={style.message}>
                 {this.props.message.authorId == this.props.currentDialogId && <div><img src={this.props.photo === null ? "https://ptetutorials.com/images/user-profile.png" : this.props.photo}></img></div>}
                 <div>
-                    <div className={style.body}>{this.props.message.body}</div>
+                    <p className={style.body}>{this.props.message.body}</p>
                     <div className={style.date}>{this.props.message.date}</div>
                 </div>
 

@@ -9,6 +9,7 @@ import Header from './header/Header';
 class Chat extends React.Component {
     state = {
         dialogs: [],
+        foundDialogs: [],
         messages: [],
         currentDialogId: null,
         writeMeId: null,
@@ -53,6 +54,11 @@ class Chat extends React.Component {
             interlocutorId: this.state.currentDialogId
         });
     };
+
+    updateFoundDialogs = (data) => {
+        this.setState({ foundDialogs: data})
+        debugger
+    }
 
 
     async componentDidMount() {
@@ -110,8 +116,10 @@ class Chat extends React.Component {
 
                     <div><Dialogs setDialogId={this.setCurrentDialogId}
                      dialogs={this.state.dialogs} 
+                     foundDialogs={this.state.foundDialogs}
                      setInterlocuterName={this.setInterlocuterName}
                      setInterlocuterPhoto={this.setInterlocuterPhoto}
+                     updateFoundDialogs={this.updateFoundDialogs}
                      /></div>
 
                     <div><Messages isTyping={this.state.isTyping}

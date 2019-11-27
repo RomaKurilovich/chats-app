@@ -1,7 +1,6 @@
 import React from 'react'
-import s from './Header.module.css'
+import style from './Header.module.css'
 import {usersAPI} from './../../api'
-import add from './../../assets/add.svg'
 
 class Header extends React.Component{
     constructor(props) {
@@ -12,23 +11,19 @@ class Header extends React.Component{
             foundUsers: [],
             foundUserId: null,
         }
-
-        this.updateFoundUsers = (data) => {
-            this.setState({ foundUsers: data})
-        }
+        
         this.setFoundUser = () => {
-
             let user = this.state.foundUsers.find((u) => u.name === this.state.value)
-       //     this.setState({foundUserId: user.id})
             this.props.addNewDialogs(user.id)
         }
-
-        this.onUpdateUserName = (e) =>{
-        
-        let newValue = e.currentTarget.value;
-        this.setState({ value : newValue})
-        usersAPI.getUsers(1,10,newValue, this.updateFoundUsers)
+        this.updateValue = (e) =>{
+            let newValue = e.currentTarget.value;
+            this.setState({ value : newValue})
+            this.props.updateValueForDialogs(newValue)
+            usersAPI.getUsers(1,10,newValue, this.props.updateFoundDialogs)
         }
+
+       
     }
 
 
@@ -36,18 +31,14 @@ class Header extends React.Component{
     render(){
 
         return(
-            <div className={s.outer}>
-                <div className={s.title}>
-                    Chat App
+            <div className={style.outer}>
+                <div className={style.title}>
+                     Recent
                 </div>
-                <div>
-                    <input className={s.inputSearch} placeholder="Inter name..." list="users" onChange={this.onUpdateUserName} value={this.state.value} />
-                    <button className={s.addDialogButton} onClick={this.setFoundUser}><img src={add} className={s.add}/></button>
-                    <datalist id="users">
-                    {this.state.foundUsers.map((u, index) => {
-                        return <option key={index} value={u.name} />
-                    })}
-                </datalist>
+                <div className={style.searchPath}>
+                    <div className={style.searchInput}>
+                        <input placeholder="Search" onChange={this.updateValue} value={this.state.value}/>
+                    </div>
                 </div>
             </div>
         )

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import style from './Dialog.module.css'
 
 class Dialog extends Component {
-    setDateInterlocuter = (interlocutor) => {debugger
+    setDateInterlocuter = (interlocutor) => {
         this.props.setDialogId(interlocutor.id)
         this.props.setInterlocuterPhoto(interlocutor.photo.small)
         this.props.setInterlocuterName(interlocutor.name)
