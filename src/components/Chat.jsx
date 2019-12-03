@@ -19,13 +19,12 @@ class Chat extends React.Component {
         interlocutorName: '',
     };
 
-    addNewDialogs = (newDialogId) => {
-
+    addNewDialogs = (newDialogId) => {debugger
         // this.setState({ dialogs: [...this.state.dialogs, newDialog]})
         const socket = openSocket('http://messenger-hackathon.herokuapp.com', {query: "token=" + localStorage.getItem('token')});
         socket.emit("init-chat", {token: localStorage.getItem('token'), interlocutorId: newDialogId})
         socket.on("init-chat-success", res => { 
-            this.setState({dialogs: [...this.state.dialogs, res.chat]})
+            this.setState({dialogs: [res.chat , ...this.state.dialogs ]})
         })
     }
     sendMessage = (text) => {
@@ -120,6 +119,7 @@ class Chat extends React.Component {
                      setInterlocuterName={this.setInterlocuterName}
                      setInterlocuterPhoto={this.setInterlocuterPhoto}
                      updateFoundDialogs={this.updateFoundDialogs}
+                     addNewDialogs={this.addNewDialogs}
                      /></div>
 
                     <div><Messages isTyping={this.state.isTyping}

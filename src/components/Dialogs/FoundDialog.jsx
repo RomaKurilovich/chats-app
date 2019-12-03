@@ -4,8 +4,15 @@ import style from './Dialog.module.css'
 class FoundDialog extends Component {
 
     render() {debugger
+
+        let setCurrentDialog = () => {
+            this.props.setDialogId(this.props.dialog.id)
+            this.props.addNewDialogs(this.props.dialog.id)
+            this.props.updateValueForDialogs('')
+        }
+
         return (
-            <div onClick={() => this.props.setDialogId(this.props.dialog.id)} className={style.dialog}>
+            <div onClick={setCurrentDialog} className={style.dialog}>
                 <div>
                     <img className={style.photo}
                      src={this.props.dialog.photos.small !== null ? this.props.dialog.photos.small : 'https://ptetutorials.com/images/user-profile.png'}/>

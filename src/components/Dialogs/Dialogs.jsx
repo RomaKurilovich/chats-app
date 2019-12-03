@@ -25,7 +25,7 @@ class Dialogs extends React.Component{
         }); 
         if (this.props.foundDialogs.length > 0){
         var foundDialogs = this.props.foundDialogs.map(d => {
-            return <FoundDialog setDialogId={this.props.setDialogId} dialog={d}/>
+            return <FoundDialog setDialogId={this.props.setDialogId} updateValueForDialogs={this.updateValueForDialogs} addNewDialogs={this.props.addNewDialogs} dialog={d}/>
         })}
         if (!this.props.dialogs[0]){
             return <Preloader/>
