@@ -76,3 +76,9 @@
     background: #05728F;
     color: white;
 }
+.date{
+    color: #747474;
+    display: block;
+    font-size: 12px;
+    margin-left: 10px;
+}

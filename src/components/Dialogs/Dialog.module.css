@@ -1,8 +1,9 @@
 .dialog{
     border: solid 0.5px grey;
-    background: #EBEBEB;
+    background: #F8F8F8;
     display: flex;
     padding: 15px;
+    cursor: pointer;
 }
 .photo{
     width: 60px;
@@ -33,4 +34,7 @@
     margin-top: 10px;
     overflow: hidden;
     height: 23px;
+}
+.allDialogs div:hover{
+    background: #D8D8D8;
 }

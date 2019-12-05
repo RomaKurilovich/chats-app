@@ -31,7 +31,7 @@ class Dialogs extends React.Component{
             return <Preloader/>
         }
         return(<div className={style.allDialogs}>
-            <Header updateFoundDialogs={this.props.updateFoundDialogs} updateValueForDialogs={this.updateValueForDialogs}/>
+            <Header updateFoundDialogs={this.props.updateFoundDialogs} value={this.state.value} updateValueForDialogs={this.updateValueForDialogs}/>
                 {((this.state.value.length > 0 ) && (foundDialogs !== undefined)) ? foundDialogs : Dialogs}
         </div>
         )

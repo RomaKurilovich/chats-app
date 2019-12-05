@@ -4,7 +4,6 @@ import Messages from "./messages/Messages";
 import s from './Chat.module.css'
 import {api} from "../api";
 import openSocket from "socket.io-client";
-import Header from './header/Header';
 
 class Chat extends React.Component {
     state = {
@@ -19,8 +18,7 @@ class Chat extends React.Component {
         interlocutorName: '',
     };
 
-    addNewDialogs = (newDialogId) => {debugger
-        // this.setState({ dialogs: [...this.state.dialogs, newDialog]})
+    addNewDialogs = (newDialogId) => {
         const socket = openSocket('http://messenger-hackathon.herokuapp.com', {query: "token=" + localStorage.getItem('token')});
         socket.emit("init-chat", {token: localStorage.getItem('token'), interlocutorId: newDialogId})
         socket.on("init-chat-success", res => { 
@@ -47,7 +45,6 @@ class Chat extends React.Component {
     }
 
     isTypingF = () => {
-
         this.socket.emit('write-message', {
             token: localStorage.getItem('token'),
             interlocutorId: this.state.currentDialogId
@@ -67,7 +64,7 @@ class Chat extends React.Component {
         this.socket = openSocket('http://messenger-hackathon.herokuapp.com', {query: "token=" + localStorage.getItem('token')});
 
         this.socket.emit('get-chats', {token: localStorage.getItem('token')});
-        this.socket.on('get-chats-success', res => {
+        this.socket.on('get-chats-success', res => { debugger
             this.setState({dialogs: res.chats})
         })
 
@@ -82,7 +79,6 @@ class Chat extends React.Component {
             }
 
         });
-
 
         this.socket.emit('get-messages', {
             token: localStorage.getItem('token'),
@@ -108,9 +104,8 @@ class Chat extends React.Component {
         this.setState({whriteHim: id})
     }
 
-
     render() {
-        return (<div>{/*<Header addNewDialogs={this.addNewDialogs}/>*/}
+        return (<div>
                 <div className={s.wrapper}>
 
                     <div><Dialogs setDialogId={this.setCurrentDialogId}

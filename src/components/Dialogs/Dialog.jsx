@@ -7,6 +7,19 @@ class Dialog extends Component {
         this.props.setInterlocuterPhoto(interlocutor.photo.small)
         this.props.setInterlocuterName(interlocutor.name)
     }
+    
+    dateConverter = (date) =>{
+        let dayNow = (new Date().getDay())
+        let dayWrap = new Date(date).getDay()
+        let dateWrap = (new Date(date)).toDateString().slice(4,10)
+        if ( dayNow == dayWrap) {
+            return 'today'
+        } else {
+            return dateWrap
+        }
+        
+    }
+
     render() {
         return (
             <div onClick={() => this.setDateInterlocuter(this.props.dialog.interlocutor)} className={style.dialog}>
@@ -18,7 +31,7 @@ class Dialog extends Component {
                 <div className={style.dialogInfo}>
                     <div className={style.dateAndName}>
                         <div className={style.nikName}>{this.props.dialog.interlocutor.name}</div>
-                        <div>{this.props.dialog.lastMessage === null ? '' : this.props.dialog.lastMessage.date} </div>
+                        <div>{this.props.dialog.lastMessage === null ? '' : this.dateConverter(this.props.dialog.lastMessage.date)} </div>
                     </div>
 
                     <div>
