@@ -32,7 +32,7 @@ class Chat extends React.Component {
             interlocutorId: this.state.currentDialogId,
             body: text
         })
-        socket.on("send-message-success", res => {
+        socket.on("send-message-success", res => { debugger
             this.setState({messages: [...this.state.messages, res.message]})
         })
     }
@@ -77,14 +77,12 @@ class Chat extends React.Component {
                     this.setState({isTyping: false})
                 }, 1000);
             }
-
         });
-
-        this.socket.emit('get-messages', {
+        this.socket.emit('get-messages', { 
             token: localStorage.getItem('token'),
             interlocutorId: this.state.currentDialogId
         });
-        this.socket.on('get-messages-success', res => {
+        this.socket.on('get-messages-success', res => { debugger
             this.setState({messages: res.messages.messages})
         });
     }
@@ -109,12 +107,14 @@ class Chat extends React.Component {
                 <div className={s.wrapper}>
 
                     <div><Dialogs setDialogId={this.setCurrentDialogId}
+                     currentDialogId={this.state.currentDialogId}
                      dialogs={this.state.dialogs} 
                      foundDialogs={this.state.foundDialogs}
                      setInterlocuterName={this.setInterlocuterName}
                      setInterlocuterPhoto={this.setInterlocuterPhoto}
                      updateFoundDialogs={this.updateFoundDialogs}
                      addNewDialogs={this.addNewDialogs}
+                     isTyping={this.state.isTyping}
                      /></div>
 
                     <div><Messages isTyping={this.state.isTyping}

@@ -11,7 +11,6 @@
     border-radius: 30px;
 }
 .dateAndName{
-
     display: flex;
     justify-content: space-between;
 }
@@ -20,7 +19,7 @@
     width: 100%;
 }
 .allDialogs{
-    height: 100vh;
+    height: calc(100vh - 50px);
     overflow: scroll;
     overflow-x:hidden;
 }
@@ -36,5 +35,22 @@
     height: 23px;
 }
 .allDialogs div:hover{
-    background: #D8D8D8;
+    background: #EBEBEB;
+}
+.preloader{
+    text-align: center;
+    margin-top: 100px;
+}
+.waitDialogs{
+    border-right: burlywood solid 1px;
+    height: 100%;
+}
+.pen{
+    width: 15px;
+}
+.pen4ik{
+    margin-top: 14px;
+}
+.currentDialog{
+    background: #DEDEDE;
 }
